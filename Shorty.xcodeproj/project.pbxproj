@@ -7,23 +7,47 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		49036D0A244B782100CDB2AE /* RelinkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49036D09244B782100CDB2AE /* RelinkRequest.swift */; };
+		49036D0C244B785600CDB2AE /* RequestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49036D0B244B785600CDB2AE /* RequestHelpers.swift */; };
+		49036D0E244B79A300CDB2AE /* RelinkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49036D0D244B79A300CDB2AE /* RelinkClient.swift */; };
+		49036D10244B7ECF00CDB2AE /* AddLinkResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49036D0F244B7ECF00CDB2AE /* AddLinkResponse.swift */; };
+		49036D12244B819900CDB2AE /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49036D11244B819900CDB2AE /* UIViewController+Extension.swift */; };
+		49036D20244B894500CDB2AE /* Shorty.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 49036D1E244B894500CDB2AE /* Shorty.xcdatamodeld */; };
+		49036D22244B993400CDB2AE /* LinksListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49036D21244B993400CDB2AE /* LinksListViewController.swift */; };
+		49036D25244B9A3800CDB2AE /* LinkCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49036D24244B9A3800CDB2AE /* LinkCells.swift */; };
+		49036D28244B9AB000CDB2AE /* Cells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49036D27244B9AB000CDB2AE /* Cells.swift */; };
+		49036D2A244B9D0000CDB2AE /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49036D29244B9D0000CDB2AE /* DataController.swift */; };
+		49036D2D244B9D6D00CDB2AE /* Link+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49036D2C244B9D6D00CDB2AE /* Link+Extension.swift */; };
 		49294C85244B1DC100C8BB7F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49294C84244B1DC100C8BB7F /* AppDelegate.swift */; };
 		49294C87244B1DC100C8BB7F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49294C86244B1DC100C8BB7F /* SceneDelegate.swift */; };
-		49294C89244B1DC100C8BB7F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49294C88244B1DC100C8BB7F /* ViewController.swift */; };
+		49294C89244B1DC100C8BB7F /* ShortyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49294C88244B1DC100C8BB7F /* ShortyViewController.swift */; };
 		49294C8C244B1DC100C8BB7F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49294C8A244B1DC100C8BB7F /* Main.storyboard */; };
 		49294C8E244B1DC500C8BB7F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49294C8D244B1DC500C8BB7F /* Assets.xcassets */; };
 		49294C91244B1DC500C8BB7F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49294C8F244B1DC500C8BB7F /* LaunchScreen.storyboard */; };
+		49C81CE3244BA2CD009CBED8 /* LinkDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C81CE2244BA2CD009CBED8 /* LinkDetailsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		49036D09244B782100CDB2AE /* RelinkRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelinkRequest.swift; sourceTree = "<group>"; };
+		49036D0B244B785600CDB2AE /* RequestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestHelpers.swift; sourceTree = "<group>"; };
+		49036D0D244B79A300CDB2AE /* RelinkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelinkClient.swift; sourceTree = "<group>"; };
+		49036D0F244B7ECF00CDB2AE /* AddLinkResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLinkResponse.swift; sourceTree = "<group>"; };
+		49036D11244B819900CDB2AE /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		49036D1F244B894500CDB2AE /* Shorty.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Shorty.xcdatamodel; sourceTree = "<group>"; };
+		49036D21244B993400CDB2AE /* LinksListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinksListViewController.swift; sourceTree = "<group>"; };
+		49036D24244B9A3800CDB2AE /* LinkCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkCells.swift; sourceTree = "<group>"; };
+		49036D27244B9AB000CDB2AE /* Cells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cells.swift; sourceTree = "<group>"; };
+		49036D29244B9D0000CDB2AE /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
+		49036D2C244B9D6D00CDB2AE /* Link+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Link+Extension.swift"; sourceTree = "<group>"; };
 		49294C81244B1DC100C8BB7F /* Shorty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Shorty.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		49294C84244B1DC100C8BB7F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		49294C86244B1DC100C8BB7F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		49294C88244B1DC100C8BB7F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		49294C88244B1DC100C8BB7F /* ShortyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortyViewController.swift; sourceTree = "<group>"; };
 		49294C8B244B1DC100C8BB7F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		49294C8D244B1DC500C8BB7F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		49294C90244B1DC500C8BB7F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		49294C92244B1DC500C8BB7F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		49C81CE2244BA2CD009CBED8 /* LinkDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkDetailsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,6 +61,64 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		49036D06244B778E00CDB2AE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				49036D2B244B9D5900CDB2AE /* Managed Object Extensions */,
+				49036D09244B782100CDB2AE /* RelinkRequest.swift */,
+				49036D0B244B785600CDB2AE /* RequestHelpers.swift */,
+				49036D0F244B7ECF00CDB2AE /* AddLinkResponse.swift */,
+				49036D0D244B79A300CDB2AE /* RelinkClient.swift */,
+				49036D1E244B894500CDB2AE /* Shorty.xcdatamodeld */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		49036D07244B779500CDB2AE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				49036D26244B9AA300CDB2AE /* Protocols */,
+				49036D23244B9A2400CDB2AE /* Cells */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		49036D08244B779D00CDB2AE /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				49036D11244B819900CDB2AE /* UIViewController+Extension.swift */,
+				49294C88244B1DC100C8BB7F /* ShortyViewController.swift */,
+				49C81CE2244BA2CD009CBED8 /* LinkDetailsViewController.swift */,
+				49036D21244B993400CDB2AE /* LinksListViewController.swift */,
+				49036D29244B9D0000CDB2AE /* DataController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		49036D23244B9A2400CDB2AE /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				49036D24244B9A3800CDB2AE /* LinkCells.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		49036D26244B9AA300CDB2AE /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				49036D27244B9AB000CDB2AE /* Cells.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		49036D2B244B9D5900CDB2AE /* Managed Object Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				49036D2C244B9D6D00CDB2AE /* Link+Extension.swift */,
+			);
+			path = "Managed Object Extensions";
+			sourceTree = "<group>";
+		};
 		49294C78244B1DC100C8BB7F = {
 			isa = PBXGroup;
 			children = (
@@ -56,15 +138,33 @@
 		49294C83244B1DC100C8BB7F /* Shorty */ = {
 			isa = PBXGroup;
 			children = (
+				49B10C6F244BAAC600AEFD3B /* Storyboards */,
+				49B10C6E244BAAAB00AEFD3B /* Assets */,
+				49036D08244B779D00CDB2AE /* Controller */,
+				49036D07244B779500CDB2AE /* View */,
+				49036D06244B778E00CDB2AE /* Model */,
 				49294C84244B1DC100C8BB7F /* AppDelegate.swift */,
 				49294C86244B1DC100C8BB7F /* SceneDelegate.swift */,
-				49294C88244B1DC100C8BB7F /* ViewController.swift */,
-				49294C8A244B1DC100C8BB7F /* Main.storyboard */,
-				49294C8D244B1DC500C8BB7F /* Assets.xcassets */,
-				49294C8F244B1DC500C8BB7F /* LaunchScreen.storyboard */,
 				49294C92244B1DC500C8BB7F /* Info.plist */,
 			);
 			path = Shorty;
+			sourceTree = "<group>";
+		};
+		49B10C6E244BAAAB00AEFD3B /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				49294C8D244B1DC500C8BB7F /* Assets.xcassets */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		49B10C6F244BAAC600AEFD3B /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				49294C8A244B1DC100C8BB7F /* Main.storyboard */,
+				49294C8F244B1DC500C8BB7F /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,9 +238,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				49294C89244B1DC100C8BB7F /* ViewController.swift in Sources */,
+				49036D12244B819900CDB2AE /* UIViewController+Extension.swift in Sources */,
+				49036D28244B9AB000CDB2AE /* Cells.swift in Sources */,
+				49036D25244B9A3800CDB2AE /* LinkCells.swift in Sources */,
+				49036D0A244B782100CDB2AE /* RelinkRequest.swift in Sources */,
+				49036D22244B993400CDB2AE /* LinksListViewController.swift in Sources */,
+				49036D0E244B79A300CDB2AE /* RelinkClient.swift in Sources */,
+				49036D20244B894500CDB2AE /* Shorty.xcdatamodeld in Sources */,
+				49036D0C244B785600CDB2AE /* RequestHelpers.swift in Sources */,
+				49294C89244B1DC100C8BB7F /* ShortyViewController.swift in Sources */,
+				49036D10244B7ECF00CDB2AE /* AddLinkResponse.swift in Sources */,
 				49294C85244B1DC100C8BB7F /* AppDelegate.swift in Sources */,
+				49036D2A244B9D0000CDB2AE /* DataController.swift in Sources */,
+				49C81CE3244BA2CD009CBED8 /* LinkDetailsViewController.swift in Sources */,
 				49294C87244B1DC100C8BB7F /* SceneDelegate.swift in Sources */,
+				49036D2D244B9D6D00CDB2AE /* Link+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -338,6 +450,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		49036D1E244B894500CDB2AE /* Shorty.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				49036D1F244B894500CDB2AE /* Shorty.xcdatamodel */,
+			);
+			currentVersion = 49036D1F244B894500CDB2AE /* Shorty.xcdatamodel */;
+			path = Shorty.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 49294C79244B1DC100C8BB7F /* Project object */;
 }
