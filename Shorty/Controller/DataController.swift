@@ -29,6 +29,23 @@ class DataController {
             completion?()
         }
     }
+    
+    func addLink(title: String, url: String, hashid: String) {
+        let entity = NSEntityDescription.entity(forEntityName: "Link", in: viewContext)
+        let newLink = Link(entity: entity!, insertInto: viewContext)
+        newLink.title = title
+        newLink.url = url
+        newLink.hashid = hashid
+        
+        do {
+            try viewContext.save()
+        } catch let error {
+            print("Error while saving hashid: \(newLink.hashid!) in memory")
+            print("Error: \(error)")
+        }
+        
+        print("Data saved!")
+    }
 }
 
 extension DataController {

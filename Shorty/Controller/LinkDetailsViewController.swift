@@ -9,18 +9,15 @@
 import UIKit
 
 class LinkDetailsViewController: UIViewController {
-    /// A text view that displays a note's text
+
     @IBOutlet weak var textView: UITextView!
 
-    /// The note being displayed and edited
     var link: Link!
     
     var dataController:DataController!
 
-    /// A closure that is run when the user asks to delete the current note
     var onDelete: (() -> Void)?
 
-    /// A date formatter for the view controller's title text
     let dateFormatter: DateFormatter = {
         let df = DateFormatter()
         df.dateStyle = .medium

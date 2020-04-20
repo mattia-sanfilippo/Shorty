@@ -10,83 +10,109 @@ import UIKit
 import CoreData
 
 class LinksListViewController: UIViewController, UITableViewDataSource {
-    /// A table view that displays a list of notes for a notebook
+    /// A table view that displays a list of links
     @IBOutlet weak var tableView: UITableView!
-
-    /// The notebook whose notes are being displayed
-    var dataController: DataController!
     
-    var links:[Link] = []
-
-    /// A date formatter for date text in note cells
-    let dateFormatter: DateFormatter = {
-        let df = DateFormatter()
-        df.dateStyle = .medium
-        return df
-    }()
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
+    var dataController:DataController!
+    
+    var fetchedResultsController:NSFetchedResultsController<Link>!
+    
+    fileprivate func setupFetchedResultsController() {
         let fetchRequest:NSFetchRequest<Link> = Link.fetchRequest()
-        //let predicate = NSPredicate(format: "notebook == %@", notebook)
-        //fetchRequest.predicate = predicate
         let sortDescriptor = NSSortDescriptor(key: "createdAt", ascending: false)
         fetchRequest.sortDescriptors = [sortDescriptor]
-        if let result = try? dataController.viewContext.fetch(fetchRequest){
-            links = result
-            tableView.reloadData()
+        
+        fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: dataController.viewContext, sectionNameKeyPath: nil, cacheName: "links")
+        fetchedResultsController.delegate = self
+        do {
+            try fetchedResultsController.performFetch()
+        } catch {
+            fatalError("The fetch could not be performed: \(error.localizedDescription)")
         }
-        navigationItem.title = ""
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        navigationItem.titleView = UIImageView(image: #imageLiteral(resourceName: "toolbar-cow"))
         navigationItem.rightBarButtonItem = editButtonItem
-        updateEditButtonState()
+
+        setupFetchedResultsController()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
+        setupFetchedResultsController()
         if let indexPath = tableView.indexPathForSelectedRow {
             tableView.deselectRow(at: indexPath, animated: false)
             tableView.reloadRows(at: [indexPath], with: .fade)
         }
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        fetchedResultsController = nil
     }
 
     // -------------------------------------------------------------------------
     // MARK: - Actions
 
     @IBAction func addTapped(sender: Any) {
-        addNote()
+        presentNewLinkAlert()
     }
 
     // -------------------------------------------------------------------------
     // MARK: - Editing
 
-    // Adds a new `Note` to the end of the `notebook`'s `notes` array
-    func addNote() {
-        let link = Link(context: dataController.viewContext)
-        link.title = "New Link"
-        link.createdAt = Date()
-        try? dataController.viewContext.save()
-        links.insert(link, at: 0)
-        tableView.insertRows(at: [IndexPath(row: 0, section: 0)], with: .fade)
-        updateEditButtonState()
+    /// Display an alert prompting the user to name a new link. Calls
+    /// `addLink(name:)`.
+    func presentNewLinkAlert() {
+        let alert = UIAlertController(title: "New Link", message: "Enter a name for this link", preferredStyle: .alert)
+
+        // Create actions
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let saveAction = UIAlertAction(title: "Save", style: .default) { [weak self] action in
+            if let name = alert.textFields?.first?.text {
+                self?.addLink(name: name)
+            }
+        }
+        saveAction.isEnabled = false
+
+        // Add a text field
+        alert.addTextField { textField in
+            textField.placeholder = "Name"
+            NotificationCenter.default.addObserver(forName: UITextField.textDidChangeNotification, object: textField, queue: .main) { notif in
+                if let text = textField.text, !text.isEmpty {
+                    saveAction.isEnabled = true
+                } else {
+                    saveAction.isEnabled = false
+                }
+            }
+        }
+
+        alert.addAction(cancelAction)
+        alert.addAction(saveAction)
+        present(alert, animated: true, completion: nil)
     }
 
-    // Deletes the `Note` at the specified index path
-    func deleteNote(at indexPath: IndexPath) {
-        let linkToDelete = link(at: indexPath)
-        links.remove(at: indexPath.row)
+    /// Adds a new link to the end of the `links` array
+    func addLink(name: String) {
+        let link = Link(context: dataController.viewContext)
+        link.title = title
+        link.createdAt = Date()
+        
+    }
+
+    /// Deletes the link at the specified index path
+    func deleteLink(at indexPath: IndexPath) {
+        let linkToDelete = fetchedResultsController.object(at: indexPath)
         dataController.viewContext.delete(linkToDelete)
         try? dataController.viewContext.save()
-        tableView.deleteRows(at: [indexPath], with: .fade)
-        if numberOfNotes == 0 {
-            setEditing(false, animated: true)
-        }
-        updateEditButtonState()
     }
 
     func updateEditButtonState() {
-        navigationItem.rightBarButtonItem?.isEnabled = numberOfNotes > 0
+        if let sections = fetchedResultsController.sections {
+            navigationItem.rightBarButtonItem?.isEnabled = sections[0].numberOfObjects > 0
+        }
     }
 
     override func setEditing(_ editing: Bool, animated: Bool) {
@@ -98,59 +124,80 @@ class LinksListViewController: UIViewController, UITableViewDataSource {
     // MARK: - Table view data source
 
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return fetchedResultsController.sections?.count ?? 1
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return numberOfNotes
+        return fetchedResultsController.sections?[section].numberOfObjects ?? 0
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let aLink = link(at: indexPath)
+        let aLink = fetchedResultsController.object(at: indexPath)
         let cell = tableView.dequeueReusableCell(withIdentifier: LinkCells.defaultReuseIdentifier, for: indexPath) as! LinkCells
 
         // Configure cell
         cell.titleLabel.text = aLink.title
-        cell.urlLabel.text = aLink.url
-        /*if let createdAt = aLink.createdAt {
-            cell.dateLabel.text = dateFormatter.string(from: createdAt)
-        }*/
         
+        cell.urlLabel.text = aLink.url
+            
         return cell
     }
 
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         switch editingStyle {
-        case .delete: deleteNote(at: indexPath)
+        case .delete: deleteLink(at: indexPath)
         default: () // Unsupported
         }
-    }
-
-    // Helpers
-
-    var numberOfNotes: Int { return links.count }
-
-    func link(at indexPath: IndexPath) -> Link {
-        return links[indexPath.row]
     }
 
     // -------------------------------------------------------------------------
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // If this is a NoteDetailsViewController, we'll configure its `Note`
-        // and its delete action
+        // If this is a NotesListViewController, we'll configure its `Link`
         if let vc = segue.destination as? LinkDetailsViewController {
             if let indexPath = tableView.indexPathForSelectedRow {
-                vc.link = link(at: indexPath)
+                vc.link = fetchedResultsController.object(at: indexPath)
                 vc.dataController = dataController
-                vc.onDelete = { [weak self] in
-                    if let indexPath = self?.tableView.indexPathForSelectedRow {
-                        self?.deleteNote(at: indexPath)
-                        self?.navigationController?.popViewController(animated: true)
-                    }
-                }
             }
         }
     }
+}
+
+extension LinksListViewController:NSFetchedResultsControllerDelegate {
+    
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        switch type {
+        case .insert:
+            tableView.insertRows(at: [newIndexPath!], with: .fade)
+            break
+        case .delete:
+            tableView.deleteRows(at: [indexPath!], with: .fade)
+            break
+        case .update:
+            tableView.reloadRows(at: [indexPath!], with: .fade)
+        case .move:
+            tableView.moveRow(at: indexPath!, to: newIndexPath!)
+        }
+    }
+    
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange sectionInfo: NSFetchedResultsSectionInfo, atSectionIndex sectionIndex: Int, for type: NSFetchedResultsChangeType) {
+        let indexSet = IndexSet(integer: sectionIndex)
+        switch type {
+        case .insert: tableView.insertSections(indexSet, with: .fade)
+        case .delete: tableView.deleteSections(indexSet, with: .fade)
+        case .update, .move:
+            fatalError("Invalid change type in controller(_:didChange:atSectionIndex:for:). Only .insert or .delete should be possible.")
+        }
+    }
+
+    
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.beginUpdates()
+    }
+    
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.endUpdates()
+    }
+    
 }

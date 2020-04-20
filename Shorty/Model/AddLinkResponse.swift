@@ -19,3 +19,4 @@ struct AddLinkResponse: Codable {
         case createdAt = "created_at"
     }
 }
+
