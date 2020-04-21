@@ -10,13 +10,17 @@ import UIKit
 
 class LinkDetailsViewController: UIViewController {
 
-    @IBOutlet weak var textView: UITextView!
-
     var link: Link!
-    
+
+    @IBOutlet weak var linkTitle: UITextField!
+    @IBOutlet weak var shortenedLink: UITextField!
+    @IBOutlet weak var createdAt: UILabel!
+    @IBOutlet weak var linkFullUrl: UITextView!
     var dataController:DataController!
 
     var onDelete: (() -> Void)?
+    
+    var onSave: (() -> Void)?
 
     let dateFormatter: DateFormatter = {
         let df = DateFormatter()
@@ -27,17 +31,27 @@ class LinkDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let createdAt = link.createdAt {
-             navigationItem.title = dateFormatter.string(from: createdAt)
-        }
+        linkTitle.text = link.title
+        shortenedLink.text = "https://rel.ink/" + (link.hashid)!
+        createdAt.text = dateFormatter.string(from: link.createdAt!)
+        linkFullUrl.text = link.url
         
-        textView.text = link.title
         try? link.managedObjectContext?.save()
     }
 
     @IBAction func deleteLink(sender: Any) {
         presentDeleteLinkAlert()
     }
+    @IBAction func openLink(_ sender: Any) {
+        if let url = URL(string: shortenedLink.text ?? "") {
+            UIApplication.shared.open(url)
+        }
+    }
+    
+    @IBAction func save(_ sender: Any) {
+        onSave?()
+    }
+    
 }
 
 // -----------------------------------------------------------------------------
@@ -58,6 +72,13 @@ extension LinkDetailsViewController {
 
 // -----------------------------------------------------------------------------
 // MARK: - UITextViewDelegate
+
+extension LinkDetailsViewController: UITextFieldDelegate {
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        link.title = textField.text
+        try? dataController.viewContext.save()
+    }
+}
 
 extension LinkDetailsViewController: UITextViewDelegate {
     func textViewDidEndEditing(_ textView: UITextView) {
