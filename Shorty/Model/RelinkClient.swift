@@ -35,6 +35,7 @@ class RelinkClient {
         let body = "{\"url\": \"\(longUrl)\"}"
         RequestHelpers.taskForPOSTRequest(url: Endpoints.addLink.url, responseType: AddLinkResponse.self, body: body, httpMethod: "POST") { (response, error) in
             if let response = response, response.hashid != "" {
+                print("request made")
                 completion(response.hashid, nil)
             }
             completion("", error)

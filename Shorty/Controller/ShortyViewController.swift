@@ -28,8 +28,11 @@ class ShortyViewController: UIViewController {
     @IBAction func makeItShorty(_ sender: Any) {
         RelinkClient.addLink(longUrl: urlField.text ?? "") { (response, error) in
             self.dataController.addLink(title: "New Link", url: self.urlField.text ?? "", hashid: response)
+            self.performSegue(withIdentifier: "goToLinksList", sender: self)
+            
         }
     }
+    
     
 }
 

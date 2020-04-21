@@ -33,12 +33,13 @@ class LinksListViewController: UIViewController, UITableViewDataSource {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.titleView = UIImageView(image: #imageLiteral(resourceName: "toolbar-cow"))
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        dataController = appDelegate.dataController
+        //navigationItem.titleView = UIImageView(image: #imageLiteral(resourceName: "toolbar-cow"))
         navigationItem.rightBarButtonItem = editButtonItem
-
         setupFetchedResultsController()
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setupFetchedResultsController()
@@ -159,6 +160,14 @@ class LinksListViewController: UIViewController, UITableViewDataSource {
             if let indexPath = tableView.indexPathForSelectedRow {
                 vc.link = fetchedResultsController.object(at: indexPath)
                 vc.dataController = dataController
+            }
+        }
+    }
+    
+    @IBAction func unwindToViewControllerA(segue: UIStoryboardSegue) {
+        DispatchQueue.global(qos: .userInitiated).async {
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
             }
         }
     }

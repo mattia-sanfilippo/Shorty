@@ -88,8 +88,8 @@
 			children = (
 				49036D11244B819900CDB2AE /* UIViewController+Extension.swift */,
 				49294C88244B1DC100C8BB7F /* ShortyViewController.swift */,
-				49C81CE2244BA2CD009CBED8 /* LinkDetailsViewController.swift */,
 				49036D21244B993400CDB2AE /* LinksListViewController.swift */,
+				49C81CE2244BA2CD009CBED8 /* LinkDetailsViewController.swift */,
 				49036D29244B9D0000CDB2AE /* DataController.swift */,
 			);
 			path = Controller;
