@@ -35,6 +35,8 @@ pod install
 4. Build app with your device or simulator!
 
 ## Requirements
+- XCode 11.4.1
+- Swift 5
 - iOS 13.0 or macOS 10.15 Catalina
 - An active internet connection
 
