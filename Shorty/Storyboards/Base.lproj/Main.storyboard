@@ -15,9 +15,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="26L-lw-mOT">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="26L-lw-mOT">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="LinkCells" id="gxU-JE-GkT" customClass="LinkCells" customModule="Shorty" customModuleProvider="target">
@@ -39,21 +38,17 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="edT-dw-qnE">
-                                                    <rect key="frame" x="286" y="4" width="34.5" height="34.5"/>
-                                                    <state key="normal" image="right-arrow"/>
-                                                    <connections>
-                                                        <segue destination="KdK-Yv-Naj" kind="presentation" id="cWG-3P-5xg"/>
-                                                    </connections>
-                                                </button>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="right-arrow" translatesAutoresizingMaskIntoConstraints="NO" id="MPJ-TH-IDj">
+                                                    <rect key="frame" x="328.5" y="4.5" width="34.5" height="34.5"/>
+                                                </imageView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="SQq-EH-dW4" firstAttribute="leading" secondItem="yQo-r6-WJK" secondAttribute="leading" constant="32" id="5bH-sh-gXh"/>
-                                                <constraint firstAttribute="trailing" secondItem="edT-dw-qnE" secondAttribute="trailing" constant="93.5" id="V3b-tM-WAS"/>
+                                                <constraint firstItem="MPJ-TH-IDj" firstAttribute="centerY" secondItem="yQo-r6-WJK" secondAttribute="centerY" id="Kcq-EH-CjZ"/>
                                                 <constraint firstAttribute="bottom" secondItem="Hfm-Vw-oy6" secondAttribute="bottom" constant="0.5" id="XIq-dG-4ge"/>
                                                 <constraint firstItem="Hfm-Vw-oy6" firstAttribute="leading" secondItem="yQo-r6-WJK" secondAttribute="leading" constant="32" id="aND-Pv-jk9"/>
+                                                <constraint firstAttribute="trailing" secondItem="MPJ-TH-IDj" secondAttribute="trailing" constant="51" id="pyn-TQ-EaI"/>
                                                 <constraint firstItem="SQq-EH-dW4" firstAttribute="top" secondItem="yQo-r6-WJK" secondAttribute="top" constant="7" id="xLF-sn-82M"/>
-                                                <constraint firstItem="edT-dw-qnE" firstAttribute="top" secondItem="yQo-r6-WJK" secondAttribute="top" constant="4" id="xp4-Kv-QCN"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -70,6 +65,12 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="26L-lw-mOT" firstAttribute="leading" secondItem="mSZ-N9-wXh" secondAttribute="leading" id="0bU-ft-41d"/>
+                            <constraint firstItem="26L-lw-mOT" firstAttribute="top" secondItem="mSZ-N9-wXh" secondAttribute="top" id="5SP-WL-cR7"/>
+                            <constraint firstItem="26L-lw-mOT" firstAttribute="bottom" secondItem="mSZ-N9-wXh" secondAttribute="bottom" id="hPb-2e-W85"/>
+                            <constraint firstItem="26L-lw-mOT" firstAttribute="trailing" secondItem="mSZ-N9-wXh" secondAttribute="trailing" id="yqg-AL-kUB"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="mSZ-N9-wXh"/>
                     </view>
                     <navigationItem key="navigationItem" title="My Shorties" id="NY4-M8-VbU"/>
@@ -79,7 +80,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iJv-36-r9D" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2225" y="647"/>
+            <point key="canvasLocation" x="2224.6376811594205" y="646.875"/>
         </scene>
         <!--Link Details View Controller-->
         <scene sceneID="7PW-If-EhX">
@@ -381,7 +382,6 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="NhT-vv-0GI"/>
-        <segue reference="QFD-qL-zPO"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Shorty-Icon" width="341" height="341"/>
