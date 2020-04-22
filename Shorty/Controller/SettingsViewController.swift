@@ -23,6 +23,9 @@ class SettingsViewController: UIViewController {
     
     @IBAction func toggleAnimationSwitch(_ sender: Any) {
         UserDefaults.standard.set(animationSwitch.isOn, forKey: "animation")
+        if(!animationSwitch.isOn){
+            showAlert(message: "Restart your app in order to apply this change!", title: "Notice")
+        }
     }
     
     @IBAction func openGitHub(_ sender: Any) {
