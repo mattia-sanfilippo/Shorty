@@ -22,7 +22,7 @@ class LinksListViewController: UIViewController, UITableViewDataSource {
         let sortDescriptor = NSSortDescriptor(key: "createdAt", ascending: false)
         fetchRequest.sortDescriptors = [sortDescriptor]
         
-        fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: dataController.viewContext, sectionNameKeyPath: nil, cacheName: "links")
+        fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: dataController.viewContext, sectionNameKeyPath: nil, cacheName: nil)
         fetchedResultsController.delegate = self
         do {
             try fetchedResultsController.performFetch()
@@ -165,11 +165,12 @@ class LinksListViewController: UIViewController, UITableViewDataSource {
     }
     
     @IBAction func unwindToViewControllerA(segue: UIStoryboardSegue) {
-        DispatchQueue.global(qos: .userInitiated).async {
+        /*DispatchQueue.global(qos: .userInitiated).async {
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
-        }
+        }*/
+        return
     }
 }
 

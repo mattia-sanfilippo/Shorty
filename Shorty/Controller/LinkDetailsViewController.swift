@@ -51,6 +51,16 @@ class LinkDetailsViewController: UIViewController {
     @IBAction func save(_ sender: Any) {
         onSave?()
     }
+    fileprivate func showShareLinkVC(_ url: URL) {
+        let controller = UIActivityViewController(activityItems: [url], applicationActivities: nil)
+        self.present(controller, animated: true, completion: nil)
+    }
+    
+    @IBAction func shareLink(_ sender: Any) {
+        if let url = URL(string: shortenedLink.text ?? "") {
+            showShareLinkVC(url)
+        }
+    }
     
 }
 
