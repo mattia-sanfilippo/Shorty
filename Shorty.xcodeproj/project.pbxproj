@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -25,6 +25,7 @@
 		49294C8C244B1DC100C8BB7F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49294C8A244B1DC100C8BB7F /* Main.storyboard */; };
 		49294C8E244B1DC500C8BB7F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49294C8D244B1DC500C8BB7F /* Assets.xcassets */; };
 		49294C91244B1DC500C8BB7F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49294C8F244B1DC500C8BB7F /* LaunchScreen.storyboard */; };
+		492BB2672450406400EB2F7D /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492BB2662450406400EB2F7D /* SettingsViewController.swift */; };
 		49C81CE3244BA2CD009CBED8 /* LinkDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C81CE2244BA2CD009CBED8 /* LinkDetailsViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -48,6 +49,7 @@
 		49294C8D244B1DC500C8BB7F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		49294C90244B1DC500C8BB7F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		49294C92244B1DC500C8BB7F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		492BB2662450406400EB2F7D /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		49C81CE2244BA2CD009CBED8 /* LinkDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkDetailsViewController.swift; sourceTree = "<group>"; };
 		5FF92843A6826909477C5F7F /* Pods-Shorty.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shorty.debug.xcconfig"; path = "Target Support Files/Pods-Shorty/Pods-Shorty.debug.xcconfig"; sourceTree = "<group>"; };
 		8358082EFD2230735325FAC6 /* Pods_Shorty.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Shorty.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -104,6 +106,7 @@
 				49036D21244B993400CDB2AE /* LinksListViewController.swift */,
 				49C81CE2244BA2CD009CBED8 /* LinkDetailsViewController.swift */,
 				49036D29244B9D0000CDB2AE /* DataController.swift */,
+				492BB2662450406400EB2F7D /* SettingsViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -188,7 +191,6 @@
 				5FF92843A6826909477C5F7F /* Pods-Shorty.debug.xcconfig */,
 				FAB38F0B76BAC3D5DE8CD9FD /* Pods-Shorty.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -314,6 +316,7 @@
 				49036D22244B993400CDB2AE /* LinksListViewController.swift in Sources */,
 				49036D0E244B79A300CDB2AE /* RelinkClient.swift in Sources */,
 				49036D20244B894500CDB2AE /* Shorty.xcdatamodeld in Sources */,
+				492BB2672450406400EB2F7D /* SettingsViewController.swift in Sources */,
 				49036D0C244B785600CDB2AE /* RequestHelpers.swift in Sources */,
 				49294C89244B1DC100C8BB7F /* ShortyViewController.swift in Sources */,
 				49036D10244B7ECF00CDB2AE /* AddLinkResponse.swift in Sources */,
