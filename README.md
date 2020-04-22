@@ -21,6 +21,19 @@ The app lets you:
 - Easily share the short link with any supported application
 - Open the links saved directly from the app, on Safari
 
+## Steps to build
+
+1. Clone repo
+```
+git clone https://github.com/mattia-sanfilippo/Shorty.git
+```
+2. Install dependencies (**Cocoapods needed**)
+```
+pod install
+```
+3. Open `Shorty.xcworkspace`
+4. Build app with your device or simulator!
+
 ## Requirements
 - iOS 13.0 or macOS 10.15 Catalina
 - An active internet connection
