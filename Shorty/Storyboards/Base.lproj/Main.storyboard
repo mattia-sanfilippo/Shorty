@@ -327,16 +327,14 @@
                                     <action selector="toggleAnimationSwitch:" destination="28h-Gq-4yj" eventType="valueChanged" id="o7J-Vf-Z2s"/>
                                 </connections>
                             </switch>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Developed by" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="adX-4i-Eyy">
-                                <rect key="frame" x="155" y="645" width="105" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Developed with ❤️ by" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="adX-4i-Eyy">
+                                <rect key="frame" x="122.5" y="617" width="169" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p87-DB-zmc">
-                                <rect key="frame" x="150" y="674" width="115" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p87-DB-zmc">
+                                <rect key="frame" x="149.5" y="646" width="115" height="30"/>
                                 <state key="normal" title="Mattia Sanfilippo"/>
                                 <connections>
                                     <action selector="openGitHub:" destination="28h-Gq-4yj" eventType="touchUpInside" id="Ljb-Iq-ScR"/>
@@ -345,10 +343,14 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="Auq-sJ-gZM" firstAttribute="bottom" secondItem="p87-DB-zmc" secondAttribute="bottom" constant="49" id="4EJ-0L-iKx"/>
+                            <constraint firstItem="p87-DB-zmc" firstAttribute="top" secondItem="adX-4i-Eyy" secondAttribute="bottom" constant="8" id="Ak3-R8-0bR"/>
                             <constraint firstItem="LYJ-BB-l37" firstAttribute="top" secondItem="Auq-sJ-gZM" secondAttribute="top" constant="20" id="Nc6-kw-gwv"/>
                             <constraint firstItem="Auq-sJ-gZM" firstAttribute="trailing" secondItem="aKO-m0-In0" secondAttribute="trailing" constant="22" id="WmO-uy-ZU8"/>
+                            <constraint firstItem="adX-4i-Eyy" firstAttribute="centerX" secondItem="hH2-s1-Mcs" secondAttribute="centerX" id="aEc-C1-PJH"/>
                             <constraint firstItem="aKO-m0-In0" firstAttribute="top" secondItem="Auq-sJ-gZM" secondAttribute="top" constant="15" id="dOp-Yo-vUf"/>
                             <constraint firstItem="LYJ-BB-l37" firstAttribute="leading" secondItem="Auq-sJ-gZM" secondAttribute="leading" constant="20" id="otf-WH-MdC"/>
+                            <constraint firstItem="p87-DB-zmc" firstAttribute="centerX" secondItem="hH2-s1-Mcs" secondAttribute="centerX" id="q7L-Oi-Tbk"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Auq-sJ-gZM"/>
                     </view>
