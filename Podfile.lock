@@ -1,0 +1,16 @@
+PODS:
+  - Comets (0.3.1)
+
+DEPENDENCIES:
+  - Comets
+
+SPEC REPOS:
+  trunk:
+    - Comets
+
+SPEC CHECKSUMS:
+  Comets: ff75eb4658d612af66073bf9fcf6e8bef274817b
+
+PODFILE CHECKSUM: 06f1ce2511ecec2ea61e8f328956c73c5a54bd76
+
+COCOAPODS: 1.9.1
