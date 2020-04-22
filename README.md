@@ -26,10 +26,10 @@ The app lets you:
 - An active internet connection
 
 ## Credits
-[Freepik](https://freepik.com/) for the icons
-[Rel.ink](https://rel.ink) for the APIs
-[cruisediary](https://github.com/cruisediary/Comets) for Comets library, which I used to animate the main view.
-[Udacity](https://udacity.com) for the amazing Swift bootcamp you've made. Thanks.
+- [Freepik](https://freepik.com/) for the icons
+- [Rel.ink](https://rel.ink) for the APIs
+- [cruisediary](https://github.com/cruisediary/Comets) for Comets library, which I used to animate the main view.
+- [Udacity](https://udacity.com) for the amazing Swift bootcamp you've made. Thanks.
 
 ## License
 This application is released under GNU GPLv3. Some of the used libraries are released under different licenses.
