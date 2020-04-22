@@ -94,9 +94,9 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                 <items>
                                     <navigationItem title="Link Title" id="kq8-R8-md7">
-                                        <barButtonItem key="rightBarButtonItem" image="savedisk" id="Azd-Xo-fy3">
+                                        <barButtonItem key="leftBarButtonItem" image="cancel-bar" landscapeImage="cancel-bar" largeContentSizeImage="cancel-bar" id="HkG-cn-Tut">
                                             <connections>
-                                                <action selector="save:" destination="KdK-Yv-Naj" id="nTp-7c-ZOu"/>
+                                                <action selector="closeLink:" destination="KdK-Yv-Naj" id="se2-r3-uT0"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -108,12 +108,6 @@
                                     <constraint firstAttribute="height" constant="44" id="Fpw-rN-QPx"/>
                                 </constraints>
                                 <items>
-                                    <barButtonItem image="trash-bar" id="upI-u7-ceu">
-                                        <connections>
-                                            <action selector="deleteLinkWithSender:" destination="KdK-Yv-Naj" id="YcJ-3u-KIm"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="CuI-nx-tek"/>
                                     <barButtonItem image="safari-bar" landscapeImage="safari-bar" largeContentSizeImage="safari-bar" id="mej-UR-UAT">
                                         <connections>
                                             <action selector="openLink:" destination="KdK-Yv-Naj" id="Wjb-VN-ozh"/>
@@ -127,13 +121,13 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Link Title" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="rdJ-gR-W6V">
+                            <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Link Title" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="rdJ-gR-W6V">
                                 <rect key="frame" x="20" y="91" width="374" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" textContentType="name"/>
                             </textField>
                             <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Shortened Link" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1b0-cO-Y9P">
-                                <rect key="frame" x="20" y="141" width="374" height="34"/>
+                                <rect key="frame" x="20" y="141" width="331" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" textContentType="url"/>
                             </textField>
@@ -160,16 +154,31 @@
                                 <textInputTraits key="textInputTraits" textContentType="url"/>
                                 <dataDetectorType key="dataDetectorTypes" link="YES"/>
                             </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bly-7i-ekf">
+                                <rect key="frame" x="354" y="140" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="40" id="3gQ-n6-LuL"/>
+                                    <constraint firstAttribute="height" constant="40" id="Eeu-fW-gma"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="Sd6-dj-eu7"/>
+                                    <constraint firstAttribute="width" constant="40" id="fhS-as-foQ"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="copy-btn"/>
+                                <connections>
+                                    <action selector="copyLink:" destination="KdK-Yv-Naj" eventType="touchUpInside" id="GMD-Ly-F5n"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="1b0-cO-Y9P" firstAttribute="centerX" secondItem="Bal-fJ-iXo" secondAttribute="centerX" id="04I-VB-Cvl"/>
+                            <constraint firstItem="1b0-cO-Y9P" firstAttribute="centerX" secondItem="Bal-fJ-iXo" secondAttribute="centerX" constant="-21.5" id="04I-VB-Cvl"/>
                             <constraint firstItem="JEe-oO-bIF" firstAttribute="centerX" secondItem="0wL-ZB-CkM" secondAttribute="centerX" id="2mS-w4-aeA"/>
                             <constraint firstItem="rdJ-gR-W6V" firstAttribute="leading" secondItem="3Uo-oB-hTp" secondAttribute="leadingMargin" id="7In-gA-rxo"/>
                             <constraint firstItem="rdJ-gR-W6V" firstAttribute="leading" secondItem="1b0-cO-Y9P" secondAttribute="leading" id="7uW-V7-kcy"/>
                             <constraint firstItem="iNA-VJ-jQn" firstAttribute="baseline" secondItem="0Ok-JI-Cd9" secondAttribute="baseline" id="8ff-ZT-xou"/>
                             <constraint firstItem="rdJ-gR-W6V" firstAttribute="top" secondItem="Bal-fJ-iXo" secondAttribute="bottom" constant="47" id="CJX-bk-EN9"/>
+                            <constraint firstItem="S3I-3E-wNL" firstAttribute="trailing" secondItem="Bly-7i-ekf" secondAttribute="trailing" constant="20" id="Eno-im-vGG"/>
                             <constraint firstItem="1b0-cO-Y9P" firstAttribute="leading" secondItem="JEe-oO-bIF" secondAttribute="leading" id="JUe-pP-Xhp"/>
+                            <constraint firstItem="Bly-7i-ekf" firstAttribute="top" secondItem="rdJ-gR-W6V" secondAttribute="bottom" constant="15" id="KfK-co-ST7"/>
                             <constraint firstItem="0wL-ZB-CkM" firstAttribute="bottom" secondItem="S3I-3E-wNL" secondAttribute="bottom" id="O0o-Rm-ZIY"/>
                             <constraint firstItem="rdJ-gR-W6V" firstAttribute="centerX" secondItem="0wL-ZB-CkM" secondAttribute="centerX" id="O11-oM-LKD"/>
                             <constraint firstItem="JEe-oO-bIF" firstAttribute="top" secondItem="1b0-cO-Y9P" secondAttribute="bottom" constant="22" id="R4e-aT-alv"/>
@@ -183,7 +192,7 @@
                             <constraint firstItem="JEe-oO-bIF" firstAttribute="leading" secondItem="iNA-VJ-jQn" secondAttribute="leading" id="huU-rD-v81"/>
                             <constraint firstItem="Bal-fJ-iXo" firstAttribute="leading" secondItem="0wL-ZB-CkM" secondAttribute="leading" id="kuB-5T-872"/>
                             <constraint firstItem="rdJ-gR-W6V" firstAttribute="trailing" secondItem="3Uo-oB-hTp" secondAttribute="trailingMargin" id="lTN-aG-9LJ"/>
-                            <constraint firstItem="1b0-cO-Y9P" firstAttribute="centerX" secondItem="0wL-ZB-CkM" secondAttribute="centerX" id="oZq-W3-Ezn"/>
+                            <constraint firstItem="1b0-cO-Y9P" firstAttribute="centerX" secondItem="0wL-ZB-CkM" secondAttribute="centerX" constant="-21.5" id="oZq-W3-Ezn"/>
                             <constraint firstItem="1b0-cO-Y9P" firstAttribute="top" secondItem="rdJ-gR-W6V" secondAttribute="bottom" constant="16" id="uoc-aq-453"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="S3I-3E-wNL"/>
@@ -192,12 +201,13 @@
                         <outlet property="createdAt" destination="0Ok-JI-Cd9" id="Fdo-D6-7Vv"/>
                         <outlet property="linkFullUrl" destination="JEe-oO-bIF" id="BBf-Yp-Ifr"/>
                         <outlet property="linkTitle" destination="rdJ-gR-W6V" id="fMs-VX-UU5"/>
+                        <outlet property="navigationTitle" destination="kq8-R8-md7" id="gsZ-dV-97f"/>
                         <outlet property="shortenedLink" destination="1b0-cO-Y9P" id="oFD-1T-k9O"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OuM-SK-Rpt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3072" y="648"/>
+            <point key="canvasLocation" x="3071.0144927536235" y="646.875"/>
         </scene>
         <!--Shorty View Controller-->
         <scene sceneID="Ozc-sO-Lww">
@@ -313,29 +323,39 @@
                             </label>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aKO-m0-In0">
                                 <rect key="frame" x="343" y="15" width="51" height="31"/>
-                            </switch>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rov-Ub-Y1J">
-                                <rect key="frame" x="162" y="71" width="90" height="30"/>
-                                <state key="normal" title="Clear all data">
-                                    <color key="titleColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
                                 <connections>
-                                    <action selector="clearAllData:" destination="28h-Gq-4yj" eventType="touchUpInside" id="sw0-iP-cAI"/>
+                                    <action selector="toggleAnimationSwitch:" destination="28h-Gq-4yj" eventType="valueChanged" id="o7J-Vf-Z2s"/>
+                                </connections>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Developed by" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="adX-4i-Eyy">
+                                <rect key="frame" x="155" y="645" width="105" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p87-DB-zmc">
+                                <rect key="frame" x="150" y="674" width="115" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Mattia Sanfilippo"/>
+                                <connections>
+                                    <action selector="openGitHub:" destination="28h-Gq-4yj" eventType="touchUpInside" id="Ljb-Iq-ScR"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="Rov-Ub-Y1J" firstAttribute="centerX" secondItem="hH2-s1-Mcs" secondAttribute="centerX" id="CVI-Hf-saK"/>
                             <constraint firstItem="LYJ-BB-l37" firstAttribute="top" secondItem="Auq-sJ-gZM" secondAttribute="top" constant="20" id="Nc6-kw-gwv"/>
                             <constraint firstItem="Auq-sJ-gZM" firstAttribute="trailing" secondItem="aKO-m0-In0" secondAttribute="trailing" constant="22" id="WmO-uy-ZU8"/>
                             <constraint firstItem="aKO-m0-In0" firstAttribute="top" secondItem="Auq-sJ-gZM" secondAttribute="top" constant="15" id="dOp-Yo-vUf"/>
-                            <constraint firstItem="Rov-Ub-Y1J" firstAttribute="top" secondItem="LYJ-BB-l37" secondAttribute="bottom" constant="30" id="jdu-FU-Oe7"/>
                             <constraint firstItem="LYJ-BB-l37" firstAttribute="leading" secondItem="Auq-sJ-gZM" secondAttribute="leading" constant="20" id="otf-WH-MdC"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Auq-sJ-gZM"/>
                     </view>
                     <navigationItem key="navigationItem" title="Settings" id="1ug-5a-1D3"/>
+                    <connections>
+                        <outlet property="animationSwitch" destination="aKO-m0-In0" id="ifn-Dm-Nae"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yvn-sw-pqA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -385,13 +405,13 @@
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Shorty-Icon" width="341" height="341"/>
+        <image name="cancel-bar" width="34.5" height="34.5"/>
+        <image name="copy-btn" width="34.5" height="34.5"/>
         <image name="folder-bar" width="34.5" height="34.5"/>
         <image name="link-bar" width="34.5" height="34.5"/>
         <image name="right-arrow" width="34.5" height="34.5"/>
         <image name="safari-bar" width="34.5" height="34.5"/>
-        <image name="savedisk" width="34.5" height="34.5"/>
         <image name="settings-bar" width="34.5" height="34.5"/>
         <image name="share" width="34.5" height="34.5"/>
-        <image name="trash-bar" width="34.5" height="34.5"/>
     </resources>
 </document>

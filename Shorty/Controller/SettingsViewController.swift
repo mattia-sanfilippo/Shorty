@@ -9,17 +9,25 @@
 import UIKit
 
 class SettingsViewController: UIViewController {
+    
+    @IBOutlet weak var animationSwitch: UISwitch!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-    }
-    @IBAction func clearAllData(_ sender: Any) {
-        let alert = UIAlertController(title: "Clear all data", message: "Do you want to clear all your data?", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        alert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: deleteHandler))
-        present(alert, animated: true, completion: nil)
+        
+        let animationFlag = UserDefaults.standard.bool(forKey: "animation")
+        
+        animationSwitch.setOn(animationFlag, animated: false)
     }
     
-    func deleteHandler(alertAction: UIAlertAction) {
-        //clearAllData
+    
+    @IBAction func toggleAnimationSwitch(_ sender: Any) {
+        UserDefaults.standard.set(animationSwitch.isOn, forKey: "animation")
+    }
+    
+    @IBAction func openGitHub(_ sender: Any) {
+        if let url = URL(string: "https://github.com/mattia-sanfilippo") {
+            UIApplication.shared.open(url)
+        }
     }
 }

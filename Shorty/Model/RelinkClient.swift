@@ -37,8 +37,9 @@ class RelinkClient {
             if let response = response, response.hashid != "" {
                 print("request made")
                 completion(response.hashid, nil)
+            } else {
+               completion("", error)
             }
-            completion("", error)
         }
     }
 }

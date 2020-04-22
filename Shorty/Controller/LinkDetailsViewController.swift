@@ -12,15 +12,12 @@ class LinkDetailsViewController: UIViewController {
 
     var link: Link!
 
+    @IBOutlet weak var navigationTitle: UINavigationItem!
     @IBOutlet weak var linkTitle: UITextField!
     @IBOutlet weak var shortenedLink: UITextField!
     @IBOutlet weak var createdAt: UILabel!
     @IBOutlet weak var linkFullUrl: UITextView!
     var dataController:DataController!
-
-    var onDelete: (() -> Void)?
-    
-    var onSave: (() -> Void)?
 
     let dateFormatter: DateFormatter = {
         let df = DateFormatter()
@@ -31,6 +28,7 @@ class LinkDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationTitle.title = link.title
         linkTitle.text = link.title
         shortenedLink.text = "https://rel.ink/" + (link.hashid)!
         createdAt.text = dateFormatter.string(from: link.createdAt!)
@@ -39,18 +37,17 @@ class LinkDetailsViewController: UIViewController {
         try? link.managedObjectContext?.save()
     }
 
-    @IBAction func deleteLink(sender: Any) {
-        presentDeleteLinkAlert()
-    }
     @IBAction func openLink(_ sender: Any) {
         if let url = URL(string: shortenedLink.text ?? "") {
             UIApplication.shared.open(url)
         }
     }
     
-    @IBAction func save(_ sender: Any) {
-        onSave?()
+    @IBAction func copyLink(_ sender: Any) {
+        UIPasteboard.general.string = shortenedLink.text
+        showAlert(message: "Link has been copied successfully!", title: "Copied")
     }
+    
     fileprivate func showShareLinkVC(_ url: URL) {
         let controller = UIActivityViewController(activityItems: [url], applicationActivities: nil)
         self.present(controller, animated: true, completion: nil)
@@ -62,37 +59,8 @@ class LinkDetailsViewController: UIViewController {
         }
     }
     
-}
-
-// -----------------------------------------------------------------------------
-// MARK: - Editing
-
-extension LinkDetailsViewController {
-    func presentDeleteLinkAlert() {
-        let alert = UIAlertController(title: "Delete Link", message: "Do you want to delete this link?", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        alert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: deleteHandler))
-        present(alert, animated: true, completion: nil)
+    @IBAction func closeLink(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
     }
-
-    func deleteHandler(alertAction: UIAlertAction) {
-        onDelete?()
-    }
-}
-
-// -----------------------------------------------------------------------------
-// MARK: - UITextViewDelegate
-
-extension LinkDetailsViewController: UITextFieldDelegate {
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        link.title = textField.text
-        try? dataController.viewContext.save()
-    }
-}
-
-extension LinkDetailsViewController: UITextViewDelegate {
-    func textViewDidEndEditing(_ textView: UITextView) {
-        link.title = textView.text
-        try? dataController.viewContext.save()
-    }
+    
 }

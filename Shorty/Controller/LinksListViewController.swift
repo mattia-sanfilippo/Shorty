@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 
 class LinksListViewController: UIViewController, UITableViewDataSource {
-    /// A table view that displays a list of links
+
     @IBOutlet weak var tableView: UITableView!
     
     var dataController:DataController!
@@ -35,8 +35,8 @@ class LinksListViewController: UIViewController, UITableViewDataSource {
         super.viewDidLoad()
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         dataController = appDelegate.dataController
-        //navigationItem.titleView = UIImageView(image: #imageLiteral(resourceName: "toolbar-cow"))
         navigationItem.rightBarButtonItem = editButtonItem
+        NotificationCenter.default.addObserver(self, selector: #selector(self.refresh), name: NSNotification.Name(rawValue: "newDataNotif"), object: nil)
         setupFetchedResultsController()
     }
     
@@ -47,63 +47,17 @@ class LinksListViewController: UIViewController, UITableViewDataSource {
             tableView.deselectRow(at: indexPath, animated: false)
             tableView.reloadRows(at: [indexPath], with: .fade)
         }
+        
+    }
+    
+    @objc func refresh() {
+        self.tableView.reloadData()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        fetchedResultsController = nil
     }
 
-    // -------------------------------------------------------------------------
-    // MARK: - Actions
-
-    @IBAction func addTapped(sender: Any) {
-        presentNewLinkAlert()
-    }
-
-    // -------------------------------------------------------------------------
-    // MARK: - Editing
-
-    /// Display an alert prompting the user to name a new link. Calls
-    /// `addLink(name:)`.
-    func presentNewLinkAlert() {
-        let alert = UIAlertController(title: "New Link", message: "Enter a name for this link", preferredStyle: .alert)
-
-        // Create actions
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        let saveAction = UIAlertAction(title: "Save", style: .default) { [weak self] action in
-            if let name = alert.textFields?.first?.text {
-                self?.addLink(name: name)
-            }
-        }
-        saveAction.isEnabled = false
-
-        // Add a text field
-        alert.addTextField { textField in
-            textField.placeholder = "Name"
-            NotificationCenter.default.addObserver(forName: UITextField.textDidChangeNotification, object: textField, queue: .main) { notif in
-                if let text = textField.text, !text.isEmpty {
-                    saveAction.isEnabled = true
-                } else {
-                    saveAction.isEnabled = false
-                }
-            }
-        }
-
-        alert.addAction(cancelAction)
-        alert.addAction(saveAction)
-        present(alert, animated: true, completion: nil)
-    }
-
-    /// Adds a new link to the end of the `links` array
-    func addLink(name: String) {
-        let link = Link(context: dataController.viewContext)
-        link.title = title
-        link.createdAt = Date()
-        
-    }
-
-    /// Deletes the link at the specified index path
     func deleteLink(at indexPath: IndexPath) {
         let linkToDelete = fetchedResultsController.object(at: indexPath)
         dataController.viewContext.delete(linkToDelete)
@@ -136,7 +90,6 @@ class LinksListViewController: UIViewController, UITableViewDataSource {
         let aLink = fetchedResultsController.object(at: indexPath)
         let cell = tableView.dequeueReusableCell(withIdentifier: LinkCells.defaultReuseIdentifier, for: indexPath) as! LinkCells
 
-        // Configure cell
         cell.titleLabel.text = aLink.title
         
         cell.urlLabel.text = aLink.url
@@ -165,11 +118,6 @@ class LinksListViewController: UIViewController, UITableViewDataSource {
     }
     
     @IBAction func unwindToViewControllerA(segue: UIStoryboardSegue) {
-        /*DispatchQueue.global(qos: .userInitiated).async {
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
-        }*/
         return
     }
 }
