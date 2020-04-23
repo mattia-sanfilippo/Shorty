@@ -79,9 +79,12 @@ class ShortyViewController: UIViewController {
                 if (self.dataController.addLink(title: name, url: self.urlField.text ?? "", hashid: response)){
                     NotificationCenter.default.post(name: NSNotification.Name(rawValue: "newDataNotif"), object: nil)
                     self.performSegue(withIdentifier: "goToLinksList", sender: self)
-                    self.handleUI(enabled: true)
                 }
             }
+            else {
+                self.showAlert(message: error?.localizedDescription ?? "Generic error" , title: "Error")
+            }
+            self.handleUI(enabled: true)
         }
     }
     
