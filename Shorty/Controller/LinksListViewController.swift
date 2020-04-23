@@ -53,10 +53,6 @@ class LinksListViewController: UIViewController, UITableViewDataSource {
     @objc func refresh() {
         self.tableView.reloadData()
     }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-    }
 
     func deleteLink(at indexPath: IndexPath) {
         let linkToDelete = fetchedResultsController.object(at: indexPath)

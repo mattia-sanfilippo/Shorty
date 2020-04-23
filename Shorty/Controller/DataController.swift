@@ -37,7 +37,9 @@ class DataController {
         newLink.url = url
         newLink.hashid = hashid
         
-        if (newLink.hashid == ""){ return false }
+        if newLink.hashid == "" {
+            return false
+        }
         
         do {
             try viewContext.save()
