@@ -21,6 +21,9 @@ The app lets you:
 - Easily share the short link with any supported application
 - Open the links saved directly from the app, on Safari
 
+### Error handling
+If the request to the web service fails, an error will be shown to the user and data won't be saved.
+
 ## Steps to build
 
 1. Clone repo
