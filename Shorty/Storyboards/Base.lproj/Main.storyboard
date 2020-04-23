@@ -162,7 +162,7 @@
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="Sd6-dj-eu7"/>
                                     <constraint firstAttribute="width" constant="40" id="fhS-as-foQ"/>
                                 </constraints>
-                                <state key="normal" title="Button" image="copy-btn"/>
+                                <state key="normal" image="copy-btn"/>
                                 <connections>
                                     <action selector="copyLink:" destination="KdK-Yv-Naj" eventType="touchUpInside" id="GMD-Ly-F5n"/>
                                 </connections>
